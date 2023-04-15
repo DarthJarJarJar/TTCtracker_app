@@ -7,18 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3547DFB729EA680900DEEE4C /* RouteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3547DFB629EA680900DEEE4C /* RouteList.swift */; };
+		35A7621D29EA1AAD00AE02AF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7621C29EA1AAD00AE02AF /* Network.swift */; };
+		35A7621F29EA1AE200AE02AF /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7621E29EA1AE200AE02AF /* Vehicle.swift */; };
+		35A7622129EA287600AE02AF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7622029EA287600AE02AF /* Location.swift */; };
+		35A7622329EA49F200AE02AF /* BusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7622229EA49F100AE02AF /* BusLabel.swift */; };
 		35B63C6429E9EEFE008FAE06 /* BusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B63C6329E9EEFD008FAE06 /* BusApp.swift */; };
 		35B63C6629E9EEFE008FAE06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B63C6529E9EEFE008FAE06 /* ContentView.swift */; };
 		35B63C6829E9EEFF008FAE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B63C6729E9EEFF008FAE06 /* Assets.xcassets */; };
 		35B63C6B29E9EEFF008FAE06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B63C6A29E9EEFF008FAE06 /* Preview Assets.xcassets */; };
+		35B63C7229E9F223008FAE06 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B63C7129E9F223008FAE06 /* File.swift */; };
+		35F9E5F329EAE47500F7990D /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F9E5F229EAE47500F7990D /* Route.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3547DFB629EA680900DEEE4C /* RouteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteList.swift; sourceTree = "<group>"; };
+		35A7621C29EA1AAD00AE02AF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		35A7621E29EA1AE200AE02AF /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		35A7622029EA287600AE02AF /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		35A7622229EA49F100AE02AF /* BusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusLabel.swift; sourceTree = "<group>"; };
 		35B63C6029E9EEFD008FAE06 /* Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B63C6329E9EEFD008FAE06 /* BusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusApp.swift; sourceTree = "<group>"; };
 		35B63C6529E9EEFE008FAE06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		35B63C6729E9EEFF008FAE06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35B63C6A29E9EEFF008FAE06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		35B63C7129E9F223008FAE06 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		35F9E5F229EAE47500F7990D /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +67,15 @@
 			children = (
 				35B63C6329E9EEFD008FAE06 /* BusApp.swift */,
 				35B63C6529E9EEFE008FAE06 /* ContentView.swift */,
+				35F9E5F229EAE47500F7990D /* Route.swift */,
+				3547DFB629EA680900DEEE4C /* RouteList.swift */,
 				35B63C6729E9EEFF008FAE06 /* Assets.xcassets */,
 				35B63C6929E9EEFF008FAE06 /* Preview Content */,
+				35B63C7129E9F223008FAE06 /* File.swift */,
+				35A7622029EA287600AE02AF /* Location.swift */,
+				35A7621C29EA1AAD00AE02AF /* Network.swift */,
+				35A7621E29EA1AE200AE02AF /* Vehicle.swift */,
+				35A7622229EA49F100AE02AF /* BusLabel.swift */,
 			);
 			path = Bus;
 			sourceTree = "<group>";
@@ -137,7 +158,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35F9E5F329EAE47500F7990D /* Route.swift in Sources */,
 				35B63C6629E9EEFE008FAE06 /* ContentView.swift in Sources */,
+				35B63C7229E9F223008FAE06 /* File.swift in Sources */,
+				35A7621D29EA1AAD00AE02AF /* Network.swift in Sources */,
+				35A7621F29EA1AE200AE02AF /* Vehicle.swift in Sources */,
+				35A7622129EA287600AE02AF /* Location.swift in Sources */,
+				3547DFB729EA680900DEEE4C /* RouteList.swift in Sources */,
+				35A7622329EA49F200AE02AF /* BusLabel.swift in Sources */,
 				35B63C6429E9EEFE008FAE06 /* BusApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +295,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bus/Preview Content\"";
+				DEVELOPMENT_TEAM = A4D74KZS77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -295,6 +324,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bus/Preview Content\"";
+				DEVELOPMENT_TEAM = A4D74KZS77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
