@@ -15,7 +15,7 @@ let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
 struct ContentView: View {
     @State private var isShowing: Bool = false
     @EnvironmentObject var network: Network
-    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 43.848240, longitude: -79.254290), span: MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4))
+    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 43.6532, longitude: -79.3832), span: MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4))
 
     
     var body: some View {
