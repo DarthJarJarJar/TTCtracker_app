@@ -7,28 +7,57 @@
 
 import SwiftUI
 
+
+
+
 struct RouteList: View {
     @EnvironmentObject var network: Network
-    @State private var hi: Bool = false
-    @State private var s = ""
+    @State var searchKey: String = ""
+    @State var e: Bool = false
+    
     var body: some View {
         
-      
-            List {
-                
-                ForEach($network.routes) {$route in
-                    Toggle(route.title, isOn: $route.showing)
-                        .toggleStyle(.automatic)
-                        .onChange(of: route.showing) { newValue in
-                            
-                            network.getAllRoutes()
-                        }
-                }
-            
-            }
-            
-       
         
+        NavigationView {
+            
+            if network.routes.isEmpty {
+                Text("Fetching routes...")
+                    .navigationTitle("Routes")
+            } else {
+                List {
+                    ForEach(filteredList) {route in
+                        Toggle(route.title, isOn: network.makeBinding(item: route) )
+                            .toggleStyle(.automatic)
+                            .onChange(of: route.showing) { newValue in
+                                print(route)
+                                PersistenceManager.saveRoutes(domainSchema: network.routes)
+                                network.vehicles = []
+                                DispatchQueue.main.async {
+                                    network.getAllRoutes()
+                                }
+                            }
+                    }
+                }
+                .navigationTitle("Routes")
+                .searchable(text: $searchKey)
+            }
+        
+            
+            
+        }
+        
+        
+        
+    }
+    
+    
+    var filteredList:[Route] {
+        if searchKey.isEmpty {
+            return network.routes
+        } else {
+           
+            return network.routes.filter { $0.title.localizedCaseInsensitiveContains(searchKey)}
+        }
     }
 }
 
