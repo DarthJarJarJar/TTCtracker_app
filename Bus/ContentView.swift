@@ -15,6 +15,7 @@ let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
 struct ContentView: View {
     @State private var isShowing: Bool = false
     @EnvironmentObject var network: Network
+    @State var startUp = true
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 43.6532, longitude: -79.3832), span: MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4))
     
    
@@ -26,13 +27,16 @@ struct ContentView: View {
         ZStack(alignment: .bottom) {
             
             
-            if network.routes.isEmpty {
+            if network.routes.isEmpty || (network.allVehicles.isEmpty && !network.showingRoutes().isEmpty && network.startUpCheck) {
                 Image(systemName: "bus")
                     .resizable()
                     .frame(width: 100, height: 100)
                     .foregroundColor(.red)
+                    .onAppear {
+                        startUp = false
+                    }
             } else {
-                Map(coordinateRegion: $mapRegion, annotationItems: network.vehicles) { vehicle in
+                Map(coordinateRegion: $mapRegion, annotationItems: network.allVehicles) { vehicle in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: Double(vehicle.lat)!, longitude: Double(vehicle.lon)!)) {
                         ZStack {
                             Image(systemName: "bus")
@@ -44,14 +48,20 @@ struct ContentView: View {
 
 
                             Text(getTag(route:vehicle.route, direction:vehicle.direction))
-                                    .padding(3)
-                                    .background(.white)
-
-                                    .foregroundColor(.black)
-
-                                    .border(.black)
-                                    .font(.custom("Ac", size: 10))
-                                    .offset(y:-18)
+                                .fontWeight(.heavy)
+                                .font(.caption2)
+                                        .padding(4)
+                                        .background(.white)
+                                        .foregroundColor(.black)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 0)
+                                                .stroke(Color.black, lineWidth: 2)
+                                                
+                                        )
+                                .offset(y:-15)
+                            
+                           
+                                
 
 
 
@@ -60,8 +70,21 @@ struct ContentView: View {
                         }
                 }
                 
-                Button("Routes") {
+                Button {
                     isShowing.toggle()
+                } label: {
+                    HStack {
+                        
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                            
+                        Text("Routes")
+                            .fontWeight(.bold)
+                            .padding(5)
+                    }
+                    .padding(5)
                 }
                 .cornerRadius(50)
                 .buttonStyle(.borderedProminent)
@@ -71,6 +94,13 @@ struct ContentView: View {
                     RouteList()
                         .presentationDetents([.medium])
                         .presentationDragIndicator(.visible)
+                        .environmentObject(network)
+                }
+                
+                
+                if network.loadingVehicles {
+                    ProgressView()
+                        .padding(20)
                 }
             }
             
@@ -82,11 +112,18 @@ struct ContentView: View {
         
         .ignoresSafeArea(.all)
         .onReceive(timer) { time in
-            network.getAllRoutes()
+            network.getAllVehicleLocations()
+            //network.getAllRoutes()
             }
         .onAppear {
-            network.getAllRoutes()
-            network.getRoutes()
+            
+            //network.getAllRoutes()
+            network.getAllVehicleLocations()
+            
+            if network.routes.isEmpty {
+                network.getRoutes()     
+            }
+
         
         }
        

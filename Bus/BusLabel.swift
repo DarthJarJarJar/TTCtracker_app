@@ -25,18 +25,20 @@ struct BusLabel: View {
             Image(systemName: "bus")
                 .resizable()
                 .frame(width: 30, height: 30)
-                .foregroundColor(.red)
+                .foregroundColor(.black)
             
             
             Text(getTag(route:label, direction:direction))
-                .padding(3)
-                .background(.white)
-                
-                .foregroundColor(.black)
-            
-                .border(.black)
-                .font(.custom("Ac", size: 10))
-                .offset(y:-18)
+                .fontWeight(.heavy)
+                        .font(.custom("Ac", size: 10))
+                        .padding(5)
+                        .background(.white)
+                        .foregroundColor(.black)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.black, lineWidth: 2)
+                        )
+                .offset(y:-15)
 //            if expanded {
 //                VStack {
 //                    Text("Route: \(getTag(route:label, direction:direction))")
@@ -76,6 +78,6 @@ struct BusLabel: View {
 struct BusLabel_Previews: PreviewProvider {
     var expand = false
     static var previews: some View {
-        BusLabel(label: "102D N", direction: "N", speed:"36", updated:"10")
+        BusLabel(label: "102D", direction: "N", speed:"36", updated:"10")
     }
 }

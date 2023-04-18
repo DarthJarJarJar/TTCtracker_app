@@ -33,7 +33,7 @@ struct RouteList: View {
                                 PersistenceManager.saveRoutes(domainSchema: network.routes)
                                 network.vehicles = []
                                 DispatchQueue.main.async {
-                                    network.getAllRoutes()
+                                    network.getAllVehicleLocations()
                                 }
                             }
                     }
